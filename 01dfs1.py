@@ -4,7 +4,6 @@ Created on Mon Jul 14 22:47:55 2017
 
 @author: Cool
 """
-
 '''
 Depth First Search (DFS), Breadth First Search (BFS) are search techniques that are commonly used on graphs to
  get to the solution. These are examples of uninformed search. They do not use any prior information

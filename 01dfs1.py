@@ -46,12 +46,29 @@ processing a node more than once, we use a boolean visited array.
 # Connected Component
 
 def dfs(graph, start):
+    # Innitialize visited list and stack 
     visited, stack = [], [start]
+    print('visited :', visited)
+    print('stack :', stack)
+    n = 0
+    # Keep looping till stack is empty
     while stack:
+        n = n + 1
+        print("Loop - ", n)
+        print('stack1 :', stack)
+        # Get the value from stack 
         vertex = stack.pop()
+        print('stack2 :', stack)
+        print('vertex :', vertex)
+        # Check if the node is processed or not.
         if vertex not in visited:
+            print('visited1 :', visited)
+            # Add unvisited node to the visisted list now
             visited.append(vertex)
+            print('visited2 :', visited)
+            # Remove the visted/processed node from the stack
             stack.extend(graph[vertex] - set(visited))
+            print('stack3 :', stack)
             print(str(visited))
     return visited
 
@@ -70,14 +87,30 @@ The implementation below uses the stack data-structure again to iteratively solv
 #%%%
 
 def dfs_paths(graph, start, goal):
+    # Initialize the stack with start value
     stack = [(start, [start])]
+    print('stack :', stack)
+    l = 0
     while stack:
+        l = l + 1
+        print("Loop - ", l)
+        # Disect stack value as vertex and path
         (vertex, path) = stack.pop()
+        print('vertex :', vertex)
+        print('path :', path)
+        # Loop until there is vertex to be checked. No need to look for next for the identified path
         for next in graph[vertex] - set(path):
+            print('Next :', next)
+            print("Graph Vertex - Path :", (graph[vertex] - set(path)))
+            # If next value is same as the goal value, get path 
             if next == goal:
+                # Use generator fucntion yield to not to loose local values in next loop of function execution
                 yield path + [next]
+                print("Path + Next :", (path + [next] ))
+                print('stack1 :', stack)
             else:
                 stack.append((next, path + [next]))
+                print('stack2 :', stack)
 
 list(dfs_paths(graph, 'A', 'F')) # [['A', 'C', 'F'], ['A', 'B', 'E', 'F']]
 

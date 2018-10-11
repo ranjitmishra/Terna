@@ -1,2 +1,2 @@
 # Terna
-PythonCodesForAI
+PythonCodesForAI mini projects
